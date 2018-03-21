@@ -11,12 +11,12 @@ DROP TABLE "IBDS"."USUARIO";
 --  DDL for Sequence SEQ_CANAL
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "IBDS"."SEQ_CANAL"  MINVALUE 1 MAXVALUE 100 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE ;
+   CREATE SEQUENCE  "IBDS"."SEQ_CANAL"  MINVALUE 1 MAXVALUE 100 INCREMENT BY 1 START WITH 21 CACHE 20 NOORDER  NOCYCLE ;
 --------------------------------------------------------
 --  DDL for Sequence SEQ_LOGS
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "IBDS"."SEQ_LOGS"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE ;
+   CREATE SEQUENCE  "IBDS"."SEQ_LOGS"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 521 CACHE 20 NOORDER  NOCYCLE ;
 --------------------------------------------------------
 --  DDL for Table CANAL
 --------------------------------------------------------
