@@ -5,7 +5,7 @@ import json
 import re
 from datetime import datetime
 
-xe = cx_Oracle.connect('IBDS/Gomby_0709@192.168.1.250/XE', encoding='ISO-8859-1')
+xe = cx_Oracle.connect('IBDS/Gomby_0709@172.30.0.250/XE', encoding='ISO-8859-1')
 
 def loadTransacciones ():
 	cur = xe.cursor()
@@ -22,7 +22,7 @@ def loadTransacciones ():
 def saveTransacciones(transList):
 	cursor = xe.cursor()
 	cursor.bindarraysize = 10
-	cursor.setinputsizes(int, 50, 20)
+	cursor.setinputsizes(int, 50, int)
 	cursor.executemany("insert into transaccion(id, nombre, categoria) values (:1, :2, :3)", transList)
 	xe.commit()
 	cursor.close()
@@ -102,14 +102,13 @@ with io.open(csvfilename, 'r', encoding="ISO-8859-1") as csvfile:
 		error = row['error']
 		if not cod in transacciones:
 			transacciones[cod] = {'id': cod, 'nombre': descripcion}
-			transaccionList.append((cod, descripcion, ''))
+			transaccionList.append((cod, descripcion, 0))
 		if not canal in canales:
 			canales[canal] = saveCanal(canal)
 		if not usuario in usuarios:
 			usuarios[usuario] = loadUsuario(usuario, fecha)
 		else:
-			usuarios[usuario]["fecha"] = fecha
-		print(usuario, canales[canal]['id'], cod, error, fecha)
+			usuarios[usuario]["fecha"] = fecha		
 		logs.append((usuario, canales[canal]['id'], cod, error, fecha))
 
 if len(transaccionList) > 0:	

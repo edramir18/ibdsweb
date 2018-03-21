@@ -6,31 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BDSPNWEB</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|VT323" rel="stylesheet">
-    <!--<link rel="stylesheet" href="css/style.css">-->
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <h1>BDSPNWEB Log</h1>
-    
-    <script>
-        const searchURL = "http://192.168.1.250:8080/ords/ordstest/ibds/category/"
-        const myHeaders = new Headers();
-        const myInit = { method: 'GET',
-                   headers: myHeaders,
-                   mode: 'cors',
-                   cache: 'default' };
-        fetch(searchURL, myInit)
-            .then( response => {
-                if(!response.ok){
-                    throw new Error('Network response was not ok.');
-                }
-                return response.json();
-            })
-            .then(json => {
-                console.log(json)
-            })
-            .catch(error => {
-                console.log('There has been a problem with your fetch operation: ', error.message);
-            });
-    </script>
+    <div class="toolbar">
+        <button data-fecha=''></button>
+        <button data-fecha=''></button>
+        <button data-fecha=''></button>
+        <button data-fecha=''></button>
+        <button data-fecha=''></button>
+        <button data-fecha=''></button>
+        <button data-fecha=''></button>
+    </div>
+    <div class="chart">
+        <canvas id="users"></canvas>
+    </div>
+    <script src="js/moment.min.js"></script>
+    <script src="js/Chart.bundle.min.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
