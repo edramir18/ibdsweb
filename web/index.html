@@ -18,12 +18,18 @@
         <button data-fecha=''></button>
         <button data-fecha=''></button>
         <button data-fecha=''></button>
-    </div>
-    <div class="chart">
-        <canvas id="users"></canvas>
+    </div>    
+    <div class="charts">       
     </div>
     <script src="js/moment.min.js"></script>
     <script src="js/Chart.bundle.min.js"></script>
     <script src="js/index.js"></script>
+
+    <template id="chart">
+        <div class="chart">
+            <h3></h3>        
+            <canvas></canvas>        
+        </div>
+    </template>
 </body>
 </html>

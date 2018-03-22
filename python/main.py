@@ -76,8 +76,8 @@ def updateUsuarios(usuarioList):
 def saveLogs(logsList):
 	cursor = xe.cursor()
 	cursor.bindarraysize = 100
-	cursor.setinputsizes(int, int, int, 20, datetime)
-	cursor.executemany("insert into logs(usuario, canal, transaccion, error, fecha) values (:1, :2, :3, :4, :5)", logsList)
+	cursor.setinputsizes(int, int, int, 20, datetime, 8, 2)
+	cursor.executemany("insert into logs(usuario, canal, transaccion, error, fecha,codigodia, codigohora) values (:1, :2, :3, :4, :5, :6, :7)", logsList)
 	xe.commit()
 	cursor.close()
 
@@ -89,7 +89,6 @@ canales = loadCanales()
 usuarios = {}
 logs = []
 
-# jsonpathname = '/bdspnlog/'
 csvfilename = 'logs/trans_ibank.log'
 with io.open(csvfilename, 'r', encoding="ISO-8859-1") as csvfile:
 	reader = csv.DictReader(csvfile, fieldnames=['canal', 'id', 'descripcion', 'usuario', 'fecha', 'error'])
@@ -109,12 +108,12 @@ with io.open(csvfilename, 'r', encoding="ISO-8859-1") as csvfile:
 			usuarios[usuario] = loadUsuario(usuario, fecha)
 		else:
 			usuarios[usuario]["fecha"] = fecha		
-		logs.append((usuario, canales[canal]['id'], cod, error, fecha))
+		logs.append((usuario, canales[canal]['id'], cod, error, fecha, datetime.strftime(fecha, '%Y%m%d'), datetime.strftime(fecha, '%H')))
 
-if len(transaccionList) > 0:	
+if len(transaccionList)>0:
 	saveTransacciones(transaccionList)
 
 updateUsuarios(usuarios)
 saveLogs(logs)
 
-xe.close
+xe.close()

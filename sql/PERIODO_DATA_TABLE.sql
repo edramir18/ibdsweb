@@ -1,6 +1,3 @@
---------------------------------------------------------
---  File created - Wednesday-March-21-2018   
---------------------------------------------------------
 REM INSERTING into IBDS.PERIODO
 SET DEFINE OFF;
 Insert into IBDS.PERIODO (ID,VALOR,RANGO) values (1,0,'hora');

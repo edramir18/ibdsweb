@@ -1,8 +1,7 @@
---------------------------------------------------------
---  File created - Wednesday-March-21-2018   
---------------------------------------------------------
 REM INSERTING into IBDS.TRANSACCION
 SET DEFINE OFF;
+Insert into IBDS.TRANSACCION (ID,NOMBRE,CATEGORIA) values (284,'Agendar Transferencia POB',7);
+Insert into IBDS.TRANSACCION (ID,NOMBRE,CATEGORIA) values (285,'Agendar Transferencia TDS',7);
 Insert into IBDS.TRANSACCION (ID,NOMBRE,CATEGORIA) values (283,'Agendar Transferencia PDS',7);
 Insert into IBDS.TRANSACCION (ID,NOMBRE,CATEGORIA) values (202,'Afiliar Beneficiario',7);
 Insert into IBDS.TRANSACCION (ID,NOMBRE,CATEGORIA) values (190,'Posición Consolidada',5);
